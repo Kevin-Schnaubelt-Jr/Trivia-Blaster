@@ -5,3 +5,5 @@ If you decide to not choose a category, the game will draw questions from every 
 
 
 [Click here to play!](https://kevin-schnaubelt-jr.github.io/Trivia-Blaster/)
+
+<sub>This app uses [opentdb.com](https://opentdb.com/)</sub>
