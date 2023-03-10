@@ -38,12 +38,14 @@ const app = Vue.createApp({
             {
                 this.score++
                 this.correctAnswer = ''
-                console.log('SCORE!', this.score)
+                // console.log('SCORE!', this.score)
                 this.correct = true
+                document.querySelector('#score-field-word').innerHTML = `Your Score!` 
+                document.querySelector('#score-field-number').innerHTML = this.score 
             }
             else
             {
-                console.log('NOOO')
+                // console.log('NOOO')
                 this.correctAnswer = triviaResponse[this.questionCounter-1].correct_answer
                 this.correct = false
             }
@@ -53,10 +55,12 @@ const app = Vue.createApp({
             }
             else
             {
+                document.querySelector('#score-field-word').innerHTML = '' 
+                document.querySelector('#score-field-number').innerHTML = '' 
                 this.transitionState = 'game_over'
                 return
             }
-            console.log('continue game works')
+            // console.log('continue game works')
             this.questionCounter++
             this.question = triviaResponse[this.questionCounter-1].question
             this.answers = triviaResponse[this.questionCounter-1].incorrect_answers
@@ -110,18 +114,22 @@ const app = Vue.createApp({
                     category: this.category,
                 }
               }).then((response) => {
-                console.log(this.category, 'category')
+                // console.log(this.category, 'category')
                 triviaResponse = response.data.results
-                console.log(triviaResponse)
+                // console.log(triviaResponse)
                 this.question = triviaResponse[0].question
                 this.answers = triviaResponse[0].incorrect_answers
                 this.answers.push(triviaResponse[0].correct_answer)
-                console.log(this.question)
-                console.log(this.answers, typeof this.answers)
-                console.log(shuffle(this.answers))
+                // console.log(this.question)
+                // console.log(this.answers, typeof this.answers)
+                // console.log(shuffle(this.answers))
                 this.answers = shuffle(this.answers)
                 
               })
+        },
+
+        playAgain(){
+            location.reload()
         }
     },
     setup(){

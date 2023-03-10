@@ -15,8 +15,12 @@
 
 <div id="app" >
 
-    <div class="flex justify-center items-center border-b-4 border-[#d902ee] h-20">
+    <div class="relative flex justify-center items-center border-b-4 border-[#d902ee] h-20">
         <p class="text-4xl text-[#ffd79d]">TRIVIA BLASTER!</p>
+        <div class="absolute top-[20rem] left-0 right-0 text-center">
+            <p id="score-field-word" class=" text-[#f162ff]"></p><span id="score-field-number" class="text-[#ffd79d]"></span>
+
+        </div>
     </div>
     <br>
 
@@ -44,7 +48,6 @@
                 <p class="text-[#ffd79d]">{{this.convertHTML(this.question)}}</p>
                 <div v-for="answer in answers">
                     <button @click="continueGame(answer)" class="play_buttons text-[#f162ff]">{{this.answers.indexOf(answer)+1}}. {{this.convertHTML(answer)}}</button>
-
                 </div>
             </div>
             <div v-else-if="transitionState === false" class="border-2 mr-2 ml-2 p-1 border-[#ffd79d]">
@@ -53,15 +56,18 @@
                     <button @click="continueGame(answer)" class="play_buttons text-[#f162ff]">{{this.answers.indexOf(answer)+1}}. {{this.convertHTML(answer)}}</button>
                 </div>
             </div >
-            <div v-else-if="transitionState === 'game_over'">
+            <div v-else-if="transitionState === 'game_over'" class=" flex flex-col items-center">
                 <p class="text-[#ffd79d] text-2xl">Thanks for playing!</p>
                 <p class="text-[#f162ff] text-center">Your score was <span class="text-[#ffd79d]">{{this.score}}</span>/<span class="text-[#ffd79d]">10</span>.</p>
+                <br>
+                <button @click="playAgain()" class="text-center bg-[#ffd79d] rounded-full h-10 w-24 text-[#320d3e] font-bold">Play Again!</button>
             </div>
         </transition>
     </div>
     <div class="flex justify-center">
         <p id="hidden-text" class="text-[#f162ff]"></p>
     </div>
+    
         
 
 </div>
