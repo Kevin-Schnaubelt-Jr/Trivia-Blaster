@@ -133,6 +133,9 @@ const app = Vue.createApp({
         }
     },
     setup(){
+    },
+    mounted(){
+        document.getElementsByTagName("html")[0].style.visibility = "visible"
     }
 })
 
